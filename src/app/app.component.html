@@ -1,30 +1,24 @@
-<form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <h1>test your password</h1>
-  <label for=""
-    >Password
-    <input type="password" placeholder="password" formControlName="password" />
-  </label>
-  <div
-    *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
-    class="validation"
-  >
-    <pre>
-    {{ form.get("password")?.errors | json }}
-</pre
-    >
-    <small
-      *ngIf="form.get('password')?.errors?.['required']"
-      [ngStyle]="{ color: 'red' }"
-      >Input cannot be empty</small
-    >
-    <small
-      *ngIf="form.get('password')?.errors?.['minlength']"
-      [ngStyle]="{ color: 'red' }"
-      >Password must be at least
-      {{ form.get("password")?.errors?.['minlength'].requiredLength }}
-      numbers and you have only
-      {{ form.get("password")?.errors?.['minlength'].actualLength }}</small
-    >
-  </div>
-  <button type="submit" [disabled]="form.invalid">Submit</button>
-</form>
+<div class="container">
+  <h2>Check Password Strength</h2>
+  <br />
+  <form class="form" [formGroup]="passwordForm">
+    <div class="form-group">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        class="form-control"
+        autocomplete="off"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <button class="form-btn" type="button" (click)="togglePassword()">
+        <i
+          class="fa-solid"
+          [ngClass]="showPassword ? 'fa-duotone fa-eye-slash' : 'fa-eye'"
+        ></i>
+      </button>
+    </div>
+    <app-password-strength
+      [passwordToCheck]="passwordForm.get('password')?.value"
+    ></app-password-strength>
+  </form>
+</div>

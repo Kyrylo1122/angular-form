@@ -6,18 +6,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  form!: FormGroup;
+  public passwordForm!: FormGroup;
+  showPassword: boolean = false;
 
   ngOnInit() {
-    this.form = new FormGroup({
+    this.passwordForm = new FormGroup({
       password: new FormControl(null, [
-        Validators.minLength(58),
+        Validators.minLength(8),
         Validators.required,
       ]),
     });
   }
-  onSubmit() {
-    const formData = { ...this.form.value };
-    console.log('formData: ', formData);
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }
