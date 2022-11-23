@@ -10,12 +10,6 @@
         placeholder="Password"
         formControlName="password"
       />
-      <button class="form-btn" type="button" (click)="togglePassword()">
-        <i
-          class="fa-solid"
-          [ngClass]="showPassword ? 'fa-duotone fa-eye-slash' : 'fa-eye'"
-        ></i>
-      </button>
     </div>
     <app-password-strength
       [passwordToCheck]="passwordForm.get('password')?.value"
