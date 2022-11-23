@@ -2,17 +2,15 @@
   <h2>Check Password Strength</h2>
   <br />
   <form class="form" [formGroup]="passwordForm">
-    <div class="form-group">
-      <input
-        [type]="showPassword ? 'text' : 'password'"
-        class="form-control"
-        autocomplete="off"
-        placeholder="Password"
-        formControlName="password"
-      />
-    </div>
-    <app-password-strength
-      [passwordToCheck]="passwordForm.get('password')?.value"
-    ></app-password-strength>
+    <input
+      [type]="showPassword ? 'text' : 'password'"
+      class="form-control"
+      autocomplete="off"
+      placeholder="Password"
+      formControlName="password"
+    />
   </form>
+  <app-password-strength
+    [passwordToCheck]="passwordForm.get('password')?.value"
+  ></app-password-strength>
 </div>
