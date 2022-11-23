@@ -2,13 +2,21 @@
   <h2>Check Password Strength</h2>
   <br />
   <form class="form" [formGroup]="passwordForm">
-    <input
-      [type]="showPassword ? 'text' : 'password'"
-      class="form-control"
-      autocomplete="off"
-      placeholder="Password"
-      formControlName="password"
-    />
+    <div class="form-group">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        class="form-control"
+        autocomplete="off"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <button class="form-btn" type="button" (click)="togglePassword()">
+        <i
+          class="fa-solid"
+          [ngClass]="showPassword ? 'fa-duotone fa-eye-slash' : 'fa-eye'"
+        ></i>
+      </button>
+    </div>
   </form>
   <app-password-strength
     [passwordToCheck]="passwordForm.get('password')?.value"
